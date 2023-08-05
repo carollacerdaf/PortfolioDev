@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         borderRadius: 6,
         padding: 16,
         backgroundColor: '#262626',
-        borderColor: '0D0D0D',
+        borderColor: '#0D0D0D',
         borderWidth: 1,
         fontSize: 16,
         color: '#808080',
@@ -33,4 +33,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    emptyListMessage: {
+        color: '#808080',
+        fontSize: 14,
+    }
 })

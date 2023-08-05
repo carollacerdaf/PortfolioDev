@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Circle, Trash } from 'phosphor-react-native';
 
@@ -14,7 +14,9 @@ export function ToDo({ todo }: Props) {
                 <Circle color="#4EA8DE" />
                 <Text style={styles.todoItem}>{todo}</Text>
             </View>
-            <Trash color="#808080" />
+            <TouchableOpacity>
+                <Trash color="#808080" />
+            </TouchableOpacity>
         </View>
     )
 }

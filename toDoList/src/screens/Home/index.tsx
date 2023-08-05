@@ -2,11 +2,23 @@ import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native"
 import { styles } from "./styles";
 import { ToDo } from "../../components/ToDo";
 import { Count } from "../../components/Count";
-import { PlusCircle, Rocket } from 'phosphor-react-native';
+import { ClipboardText, PlusCircle, Rocket } from 'phosphor-react-native';
 import { Header } from "../../components/Header";
+import { useState } from "react";
 
 export function Home() {
-    const todo = ['ok', 'deu certo']
+    const [todos, setTodos] = useState<string[]>([]);
+    const [todo, setTodo] = useState('');
+
+    function handleAddTodo() {
+        setTodos(prevState => [...prevState, todo])
+        setTodo('')
+    }
+
+    function removeTodo(todoAdd: string) {
+        setTodos(prevState => prevState.filter(todo => todo !== todoAdd))
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -14,8 +26,11 @@ export function Home() {
                 <TextInput
                     style={styles.input}
                     placeholder="Adicione uma nova tarefa"
-                    placeholderTextColor='#808080' />
-                <TouchableOpacity style={styles.button}>
+                    placeholderTextColor='#808080'
+                    onChangeText={setTodo}
+                    value={todo}
+                />
+                <TouchableOpacity style={styles.button} onPress={handleAddTodo}>
                     <PlusCircle color="#F2F2F2" />
                 </TouchableOpacity>
             </View>
@@ -31,7 +46,11 @@ export function Home() {
                 )}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={() => (
-                    <Text>Emptyyy</Text>
+                    <>
+                        <ClipboardText color="#808080" size={40} />
+                        <Text style={styles.emptyListMessage}>Você ainda não tem tarefas cadastradas
+                            Crie tarefas e organize seus itens a fazer</Text>
+                    </>
                 )}
             />
         </View>
