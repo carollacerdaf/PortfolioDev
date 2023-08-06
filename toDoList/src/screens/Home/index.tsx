@@ -19,6 +19,10 @@ export function Home() {
         setTodos(prevState => prevState.filter(todo => todo !== todoAdd))
     }
 
+    function checkTodo() {
+        return true;
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -42,15 +46,22 @@ export function Home() {
                     <ToDo
                         key={item}
                         todo={item}
+                        checkTodo={checkTodo}
                     />
                 )}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={() => (
-                    <>
-                        <ClipboardText color="#808080" size={40} />
-                        <Text style={styles.emptyListMessage}>Você ainda não tem tarefas cadastradas
+                    <View style={{ alignItems: 'center' }}>
+                        <View style={styles.emptyListIcon}>
+                            <ClipboardText color="#808080" size={40} />
+                        </View>
+                        <Text style={styles.emptyListMessageBold}>
+                            Você ainda não tem tarefas cadastradas
+                        </Text>
+                        <Text style={styles.emptyListMessage}>
                             Crie tarefas e organize seus itens a fazer</Text>
-                    </>
+
+                    </View>
                 )}
             />
         </View>

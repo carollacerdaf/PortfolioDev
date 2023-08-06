@@ -36,5 +36,14 @@ export const styles = StyleSheet.create({
     emptyListMessage: {
         color: '#808080',
         fontSize: 14,
+    },
+    emptyListMessageBold: {
+        color: '#808080',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    emptyListIcon: {
+        marginTop: 48,
+        marginBottom: 16,
     }
 })
