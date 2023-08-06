@@ -1,45 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Check, Trash } from 'phosphor-react-native';
 
 type Props = {
     todo: string;
-    checkTodo: () => boolean;
+    onRemove: () => void
 }
 
-export function ToDo({ todo, checkTodo }: Props) {
-    let check = false;
-    if (checkTodo()) { check = true };
+export function ToDo({ todo, onRemove }: Props) {
+    const [check, setCheck] = useState<boolean>(false);
+
+    function handleRadioButton() {
+        if (check) {
+            setCheck(false);
+        } else {
+            setCheck(true);
+        }
+    }
+
     return (
         <View style={styles.todoContainer}>
             <View style={styles.checkTodo}>
-                <TouchableOpacity onPress={checkTodo}>
-                    <View style={[{
-                        height: 24,
-                        width: 24,
-                        borderRadius: 12,
-                        borderWidth: 2,
-                        borderColor: '#4EA8DE',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    },]}>
+                <TouchableOpacity onPress={handleRadioButton}>
+                    <View style={[
+                        styles.radioButton
+                        , (check) ? styles.checked : null]}>
                         {
                             check ?
-                                <View style={{
-                                    borderRadius: 6,
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}>
+                                <View style={styles.checkSign}>
                                     <Check color="#F2F2F2" size={8} />
                                 </View>
                                 : null
                         }
                     </View>
                 </TouchableOpacity>
-                <Text style={styles.todoItem}>{todo}</Text>
+                <Text style={[styles.todoItem, (check)? styles.checkedTodo : null]}>{todo}</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onRemove}>
                 <Trash color="#808080" />
             </TouchableOpacity>
         </View>

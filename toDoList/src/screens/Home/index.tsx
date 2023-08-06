@@ -9,18 +9,14 @@ import { useState } from "react";
 export function Home() {
     const [todos, setTodos] = useState<string[]>([]);
     const [todo, setTodo] = useState('');
-
+    
     function handleAddTodo() {
         setTodos(prevState => [...prevState, todo])
         setTodo('')
     }
 
-    function removeTodo(todoAdd: string) {
+    function deleteTodo(todoAdd: string) {
         setTodos(prevState => prevState.filter(todo => todo !== todoAdd))
-    }
-
-    function checkTodo() {
-        return true;
     }
 
     return (
@@ -38,15 +34,15 @@ export function Home() {
                     <PlusCircle color="#F2F2F2" />
                 </TouchableOpacity>
             </View>
-            <Count />
+            <Count countTodo={todos.length}/>
             <FlatList
-                data={todo}
+                data={todos}
                 keyExtractor={item => item}
                 renderItem={({ item }) => (
                     <ToDo
                         key={item}
                         todo={item}
-                        checkTodo={checkTodo}
+                        onRemove={() => deleteTodo(item)}
                     />
                 )}
                 showsVerticalScrollIndicator={false}
@@ -60,7 +56,6 @@ export function Home() {
                         </Text>
                         <Text style={styles.emptyListMessage}>
                             Crie tarefas e organize seus itens a fazer</Text>
-
                     </View>
                 )}
             />

@@ -1,10 +1,14 @@
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 
-export function NumberOfTodos() {
+type Props = {
+    countTodo: number;
+}
+
+export function NumberOfTodos({ countTodo }: Props) {
     return (
         <View style={styles.countingContainer}>
-            <Text style={styles.counting}>5</Text>
+            <Text style={styles.counting}>{countTodo}</Text>
         </View>
     );
 }

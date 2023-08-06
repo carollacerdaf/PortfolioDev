@@ -18,5 +18,26 @@ export const styles = StyleSheet.create({
     },
     checkTodo: {
         flexDirection: 'row',
+    },
+    radioButton: {
+        height: 24,
+        width: 24,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#4EA8DE',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    checked: {
+        backgroundColor: '#5E60CE'
+    },
+    checkedTodo: {
+        textDecorationLine: 'line-through',
+        color: '#808080'
+    },
+    checkSign: {
+        borderRadius: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });
