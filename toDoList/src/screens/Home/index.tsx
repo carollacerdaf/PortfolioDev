@@ -4,12 +4,17 @@ import { ToDo } from "../../components/ToDo";
 import { Count } from "../../components/Count";
 import { ClipboardText, PlusCircle, Rocket } from 'phosphor-react-native';
 import { Header } from "../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Home() {
     const [todos, setTodos] = useState<string[]>([]);
     const [todo, setTodo] = useState('');
-    
+    const [check, setCheck] = useState(false);
+
+    function handleRadioButton() {
+        setCheck(true)
+        return check;
+    }
     function handleAddTodo() {
         setTodos(prevState => [...prevState, todo])
         setTodo('')
@@ -34,7 +39,7 @@ export function Home() {
                     <PlusCircle color="#F2F2F2" />
                 </TouchableOpacity>
             </View>
-            <Count countTodo={todos.length}/>
+            <Count countTodo={todos.length} />
             <FlatList
                 data={todos}
                 keyExtractor={item => item}
@@ -43,6 +48,7 @@ export function Home() {
                         key={item}
                         todo={item}
                         onRemove={() => deleteTodo(item)}
+                        onCheck={() => handleRadioButton()}
                     />
                 )}
                 showsVerticalScrollIndicator={false}

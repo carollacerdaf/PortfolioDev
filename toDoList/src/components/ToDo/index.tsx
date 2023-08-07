@@ -6,28 +6,20 @@ import { Check, Trash } from 'phosphor-react-native';
 type Props = {
     todo: string;
     onRemove: () => void
+    onCheck: () => boolean
 }
 
-export function ToDo({ todo, onRemove }: Props) {
-    const [check, setCheck] = useState<boolean>(false);
-
-    function handleRadioButton() {
-        if (check) {
-            setCheck(false);
-        } else {
-            setCheck(true);
-        }
-    }
-
+export function ToDo({ todo, onRemove, onCheck }: Props) {
+    console.log(onCheck)
     return (
         <View style={styles.todoContainer}>
             <View style={styles.checkTodo}>
-                <TouchableOpacity onPress={handleRadioButton}>
+                <TouchableOpacity onPress={onCheck}>
                     <View style={[
                         styles.radioButton
-                        , (check) ? styles.checked : null]}>
+                        , (onCheck()) ? styles.checked : null]}>
                         {
-                            check ?
+                            onCheck() ?
                                 <View style={styles.checkSign}>
                                     <Check color="#F2F2F2" size={8} />
                                 </View>
@@ -35,7 +27,7 @@ export function ToDo({ todo, onRemove }: Props) {
                         }
                     </View>
                 </TouchableOpacity>
-                <Text style={[styles.todoItem, (check)? styles.checkedTodo : null]}>{todo}</Text>
+                <Text style={[styles.todoItem, (onCheck())? styles.checkedTodo : null]}>{todo}</Text>
             </View>
             <TouchableOpacity onPress={onRemove}>
                 <Trash color="#808080" />
