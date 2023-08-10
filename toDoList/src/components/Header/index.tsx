@@ -1,16 +1,16 @@
-import { View, Text } from "react-native";
-import { Rocket } from "phosphor-react-native";
+import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
-import { Icon } from "../Icon";
 
 export function Header() {
     return (
         <View style={styles.header}>
-            <Icon />
-            <Text style={{ color: '#4EA8DE', fontSize: 24, marginLeft: 12 }}>
+            <Image
+                source={require('../../../assets/rocket.png')}
+            />
+            <Text style={[{ color: '#4EA8DE', marginLeft: 12 }, styles.title]}>
                 to
             </Text>
-            <Text style={{ color: '#5E60CE', fontSize: 24 }}>
+            <Text style={[{ color: '#5E60CE' }, styles.title]}>
                 do
             </Text>
         </View>
