@@ -4,22 +4,21 @@ import { styles } from "./styles";
 import { Check, Trash } from 'phosphor-react-native';
 
 type Props = {
-    todo: string;
+    todo: any;
     onRemove: () => void
-    onCheck: () => boolean
+    onCheck: () => void
 }
 
 export function ToDo({ todo, onRemove, onCheck }: Props) {
-    console.log(onCheck)
     return (
         <View style={styles.todoContainer}>
             <View style={styles.checkTodo}>
                 <TouchableOpacity onPress={onCheck}>
                     <View style={[
                         styles.radioButton
-                        , (onCheck()) ? styles.checked : null]}>
+                        , (todo.isChecked) ? styles.checked : null]}>
                         {
-                            onCheck() ?
+                            todo.isChecked ?
                                 <View style={styles.checkSign}>
                                     <Check color="#F2F2F2" size={8} />
                                 </View>
@@ -27,7 +26,7 @@ export function ToDo({ todo, onRemove, onCheck }: Props) {
                         }
                     </View>
                 </TouchableOpacity>
-                <Text style={[styles.todoItem, (onCheck())? styles.checkedTodo : null]}>{todo}</Text>
+                <Text style={[styles.todoItem, (todo.isChecked) ? styles.checkedTodo : null]}>{todo.todo}</Text>
             </View>
             <TouchableOpacity onPress={onRemove}>
                 <Trash color="#808080" />

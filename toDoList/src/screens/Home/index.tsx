@@ -7,21 +7,37 @@ import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
 
 export function Home() {
-    const [todos, setTodos] = useState<string[]>([]);
-    const [todo, setTodo] = useState('');
+    const [todos, setTodos] = useState<{todo: string; isChecked: boolean}[]>([]);
+    const [todo, setTodo] = useState<{todo: string; isChecked: boolean}>({});
     const [check, setCheck] = useState(false);
 
-    function handleRadioButton() {
-        setCheck(true)
-        return check;
+    const userList = [
+        {
+            todo: "David",
+            isChecked: false,
+
+        },
+        {
+            todo: "Phillip",
+            isChecked: false,
+
+        },
+        {
+            todo: "Kelly",
+            isChecked: false,
+        },
+    ];
+
+    function handleRadioButton(item) {
+       setTodo(item.todo, true);
     }
     function handleAddTodo() {
-        setTodos(prevState => [...prevState, todo])
-        setTodo('')
+        setTodos(prevState  => [... prevState , {todo: '', isChecked:false}])
+        setTodo('', false)
     }
 
     function deleteTodo(todoAdd: string) {
-        setTodos(prevState => prevState.filter(todo => todo !== todoAdd))
+        setTodos(prevState => prevState.filter(todo => todo.todo !== todoAdd))
     }
 
     return (
@@ -42,13 +58,13 @@ export function Home() {
             <Count countTodo={todos.length} />
             <FlatList
                 data={todos}
-                keyExtractor={item => item}
+                keyExtractor={item => item.todo}
                 renderItem={({ item }) => (
                     <ToDo
-                        key={item}
+                        key={item.todo}
                         todo={item}
-                        onRemove={() => deleteTodo(item)}
-                        onCheck={() => handleRadioButton()}
+                        onRemove={() => deleteTodo(item.todo)}
+                        onCheck={() => handleRadioButton(item)}
                     />
                 )}
                 showsVerticalScrollIndicator={false}
