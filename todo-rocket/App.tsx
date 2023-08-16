@@ -9,10 +9,6 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar
-        barStyle="light-content"
-        translucent
-      />
       {fontsLoaded ? <Todo /> : <ActivityIndicator />}
     </ThemeProvider>
 

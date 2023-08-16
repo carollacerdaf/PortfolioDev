@@ -1,9 +1,11 @@
-import { Container, TempTitle } from './styles';
+import { Image } from "react-native";
+import { Container } from './styles';
+import logo from '@assets/logo.png';
 
 export function Header() {
     return(
         <Container>
-            <TempTitle>LOGO GOES HERE</TempTitle>
+            <Image source={logo}/>
         </Container>
     );
 }

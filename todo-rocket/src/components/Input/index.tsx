@@ -10,6 +10,7 @@ export function Input({placeholderTextColor}: Props) {
     return(
             <Container 
                 placeholderTextColor={COLORS.GRAY_300}
+                placeholder="Adicione uma nova tarefa"
             />
     );
 }
