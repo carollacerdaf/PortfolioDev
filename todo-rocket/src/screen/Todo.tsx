@@ -15,7 +15,6 @@ export function Todo() {
     const [checkbox, setCheckbox] = useState(false);
     const [checkedTodos, setCheckedTodos] = useState<string[]>([]);
 
-    let count = 0;
     function handleAddTodo() {
         if (todos.includes(todo)) {
             return Alert.alert("Tarefa existe", "Já existe essa tarefa na lista.")
@@ -30,9 +29,14 @@ export function Todo() {
 
     function handleCheckbox(text: string) {
         setCheckbox(!checkbox);
-
-        if (checkbox)
+        if (todos.length === 0) {
+            setCheckedTodos([]);
+        }
+        if (!checkbox) {
             setCheckedTodos(prevState => [...prevState, text]);
+        }else{
+            setCheckedTodos(prevState => prevState.filter(checkedTodos => checkedTodos !== text));
+        }
     }
 
     return (

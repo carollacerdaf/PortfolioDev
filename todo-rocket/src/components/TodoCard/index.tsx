@@ -1,5 +1,7 @@
+import { View, ViewProps } from "react-native";
 import { CheckBox, Container, Title, Icon, TitleContainer } from "./styles";
 import { Trash } from 'phosphor-react-native';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useTheme } from "styled-components";
 
 type Props = {

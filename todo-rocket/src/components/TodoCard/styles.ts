@@ -35,7 +35,6 @@ export const Title = styled.Text`
 export const CheckBox = styled(BouncyCheckbox).attrs(({ theme }) => ({
   size: 17,
   fillColor: theme.COLORS.PURPLE_DARK,
-
 }))``;
 
 export const Icon = styled(TouchableOpacity)``;
