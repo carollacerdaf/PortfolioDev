@@ -5,12 +5,13 @@ import { Container } from "./styles";
 
 type Props = TextInputProps;
 
-export function Input({placeholderTextColor}: Props) {
+export function Input({ ...rest }: Props) {
     const { COLORS } = useTheme();
-    return(
-            <Container 
-                placeholderTextColor={COLORS.GRAY_300}
-                placeholder="Adicione uma nova tarefa"
-            />
+    return (
+        <Container
+            {...rest}
+            placeholderTextColor={COLORS.GRAY_300}
+            placeholder="Adicione uma nova tarefa"
+        />
     );
 }

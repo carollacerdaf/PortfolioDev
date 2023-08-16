@@ -1,17 +1,18 @@
-import { Container, Line } from "./styles";
+import { Container } from "./styles";
 import { CountTodo } from "@components/CountTodo";
 import { useTheme } from 'styled-components/native'
 
 type Props = {
-    number: number;
+    added: number;
+    checked: number;
 }
 
-export function CountTodoCard({ number }: Props) {
+export function CountTodoCard({ added, checked }: Props) {
     const { COLORS } = useTheme();
     return (
         <Container>
-            <CountTodo title="Criadas" number={number} style={{color:COLORS.BLUE}}/>
-            <CountTodo title="Concluídas" number={number} style={{color:COLORS.PURPLE}}/>
+            <CountTodo title="Criadas" number={added} style={{color:COLORS.BLUE}}/>
+            <CountTodo title="Concluídas" number={checked} style={{color:COLORS.PURPLE}}/>
         </Container>
     );
 }

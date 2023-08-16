@@ -1,12 +1,17 @@
-import { Input } from "@components/Input";
+import { TextInputProps } from "react-native";
 import { Container } from "./styles";
+import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 
-export function AddTodo() {
+type Props = TextInputProps & {
+    onPress: () => void;
+}
+
+export function AddTodo({ onPress, ...rest }: Props) {
     return (
         <Container>
-            <Input />
-            <Button onPress={() => {}}/>
+            <Input {...rest} />
+            <Button onPress={onPress}/>
         </Container>
     );
 }

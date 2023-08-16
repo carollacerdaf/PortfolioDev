@@ -1,9 +1,9 @@
 import { TouchableOpacityProps } from 'react-native';
 import { Container, Icon } from './styles';
 
-export function Button({onPress}: TouchableOpacityProps) {
+export function Button({...rest}: TouchableOpacityProps) {
     return(
-        <Container onPress={onPress}>
+        <Container {...rest}>
             <Icon />
         </Container> 
     );
