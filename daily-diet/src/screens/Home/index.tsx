@@ -19,7 +19,7 @@ export function Home() {
             <Header />
             <Highlights title="90,86%" subtitle="das refeições dentro da dieta" />
             <Title>Refeições</Title>
-            <Button title="Nova refeição" />
+            <Button showIcon title="Nova refeição" />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <FoodList />
                 <FoodList />

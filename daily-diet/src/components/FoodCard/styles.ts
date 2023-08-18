@@ -1,6 +1,13 @@
 import styled, { css } from 'styled-components/native';
 import { Circle } from 'phosphor-react-native'
 
+export type StatusIconTypeStyleProps = 'DIETA' | 'FORA_DIETA';
+
+type Props = {
+    type: StatusIconTypeStyleProps,
+}
+
+
 export const Container = styled.View`
 ${({ theme }) => css`
     border-color: ${theme.COLORS.GRAY_5};
@@ -33,9 +40,9 @@ export const Divider = styled.Text`
     padding: 12px;
   `;
 
-export const Status = styled(Circle).attrs(({ theme }) => ({
+export const Status = styled(Circle).attrs<Props>(({ theme, type }) => ({
     size: 14,
-    color: theme.COLORS.RED_MID,
+    color: type === 'DIETA' ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID,
     weight: 'fill'
 }))`
 `;
