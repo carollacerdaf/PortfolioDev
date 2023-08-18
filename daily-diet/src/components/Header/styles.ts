@@ -17,4 +17,5 @@ export const Logo = styled.Image`
 export const ProfileImage = styled.Image`
     width: 40px;
     height: 40px;
+    margin-right: 14px;
 `;

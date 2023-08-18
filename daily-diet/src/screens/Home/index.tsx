@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, ScrollView } from "react-native";
 
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
@@ -20,8 +20,11 @@ export function Home() {
             <Highlights title="90,86%" subtitle="das refeições dentro da dieta" />
             <Title>Refeições</Title>
             <Button title="Nova refeição" />
-            <FoodList/>
-            
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <FoodList />
+                <FoodList />
+            </ScrollView>
+
         </Container>
     );
 }
