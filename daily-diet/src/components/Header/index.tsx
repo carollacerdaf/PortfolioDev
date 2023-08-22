@@ -1,12 +1,27 @@
-import {Container, Logo, ProfileImage} from './styles'
+import { BackButton, BackIcon, Container, ContainerFilled, Logo, ProfileImage } from './styles'
 import logo from '@assets/logo.png'
 import ellipse from '@assets/ellipse.png'
 
-export function Header() {
-    return(
+type Props = {
+    showBackButton?: boolean;
+}
+
+export function Header({ showBackButton }: Props) {
+    return (
         <Container>
-            <Logo source={logo}/>
-            <ProfileImage source={ellipse}/>
+            {showBackButton &&
+                <ContainerFilled>
+                    <BackButton onPress={() => { }}>
+                        <BackIcon />
+                    </BackButton>
+                </ContainerFilled>
+            }
+            {!showBackButton &&
+                <>
+                    <Logo source={logo} />
+                    <ProfileImage source={ellipse} />
+                </>
+            }
         </Container>
     );
 }
