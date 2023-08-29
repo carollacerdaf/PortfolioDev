@@ -25,7 +25,7 @@ type RouteParams = {
 export function Players() {
     const [isLoading, setIsLoading] = useState(true);
     const [newPlayerName, setNewPlayerName] = useState('');
-    const [team, setTeam] = useState('');
+    const [team, setTeam] = useState('Time A');
     const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
 
     const navigation = useNavigation();
@@ -155,7 +155,7 @@ export function Players() {
                             message='Não há pessoas nesse time.'
                         />
                     }
-                    showsVerticalScrollIndicator
+                    showsVerticalScrollIndicator={false}
                     contentContainerStyle={[
                         { paddingBottom: 100 },
                         players.length === 0 && { flex: 1 }
